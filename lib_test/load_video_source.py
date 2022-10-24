@@ -12,9 +12,14 @@ from matplotlib import pyplot as plt #aqui é pra poder visualizar imagens
 
 cap = cv2.VideoCapture(0)
 
+object_detector = cv2.createBackgroundSubtractorMOG2()
+
 while cap.isOpened(): #aqui ele faz um loop pra tirar vários frames enquanto o dispositivo de captura está ativo
     ret, frame = cap.read()
 
+    mascara = object_detector.apply(frame)
+
+    cv2.imshow('Mask', mascara)
     cv2.imshow('Webcam', frame)
     gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
     cv2.imshow('GrayWebcam', gray)
