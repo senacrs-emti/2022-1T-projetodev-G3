@@ -1,19 +1,21 @@
 import cv2
 import numpy as np
-import tkinter
 import time
+import os
 from keras.models import load_model
+
+pasta = os.path.dirname(__file__)
 
 
 #Aqui ele importa o modelo, que eu exportei do Teachable Machine
 #A gente utiliza o Keras pra carregar esse modelo
-model = load_model('./arduino_leonardo_pro_micro/keras_model.h5')
+model = load_model(pasta+'/keras_model.h5')
 
 #Aqui a gente armazena em uma variável o dispositivo de captura, ou seja, qual webcam você vai usar. Utiliza o opencv
 camera = cv2.VideoCapture(1)
 
 #Aqui ele lê o arquivo de classes de imagens, para a futura identificação, separando por linhas.
-labels = open('./arduino_leonardo_pro_micro/labels.txt', 'r').readlines()
+labels = open(pasta+'/labels.txt', 'r').readlines()
 
 #Aqui criamos um loop para que o código ocorra enquanto a câmera está ativa
 while camera.isOpened():
@@ -33,18 +35,21 @@ while camera.isOpened():
     #Aqui definimos qual a probabilidade de ser uma determinada label, e armazenamos isto como string em 'label_probability'
     label_probability = str(labels[np.argmax(probabilities)])
         
-    window = Tk()
-    window.title("Identificação de recipiente")
     if label_probability[0:1] == "0":
         print("Puxando recipiente de plástico, aguarde...")
     elif label_probability[0:1] == "1":
+        
         print("Puxando recipiente de alumínio, aguarde...")
     elif label_probability[0:1] == "2":
         print("Puxando recipiente de alumínio, aguarde...")
     else:
+    elif label_probability[0:1] == "3": 
+        
         print("Este resíduo será encaminhado para o recipiente misto para melhor averiguação.")
     janela = mainloop()
     print(label_probability[0:1])
+        
+    
     
     keyboard_input = cv2.waitKey(1)
     # 27 ASCII = esc 
@@ -54,4 +59,4 @@ while camera.isOpened():
 
 camera.release()
 cv2.destroyAllWindows()
-
+cv2.destroyAllWindows()

@@ -1,3 +1,5 @@
-0 Plástico
-1 Alumínio
-2 Papelão
+0 Plastico
+1 Aluminio
+2 Papel
+3 Organico
+4 Outro
