@@ -1,0 +1,3 @@
+0 Plástico
+1 Alumínio
+2 Papelão
