@@ -36,18 +36,20 @@ while camera.isOpened():
     label_probability = str(labels[np.argmax(probabilities)])
         
     if label_probability[0:1] == "0":
+       
         print("Puxando recipiente de plástico, aguarde...")
     elif label_probability[0:1] == "1":
         
         print("Puxando recipiente de alumínio, aguarde...")
     elif label_probability[0:1] == "2":
-        print("Puxando recipiente de alumínio, aguarde...")
-    else:
+       
+        print("Puxando recipiente de papel, aguarde...")
     elif label_probability[0:1] == "3": 
         
+        print("Puxando recipiente de resíduos orgânicos, aguarde...") 
+    elif label_probability[0:1] == "4":
+        
         print("Este resíduo será encaminhado para o recipiente misto para melhor averiguação.")
-    janela = mainloop()
-    print(label_probability[0:1])
         
     
     
@@ -58,5 +60,4 @@ while camera.isOpened():
 
 
 camera.release()
-cv2.destroyAllWindows()
 cv2.destroyAllWindows()
