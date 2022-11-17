@@ -49,7 +49,7 @@ while camera.isOpened():
         print("Puxando recipiente de resíduos orgânicos, aguarde...") 
     elif label_probability[0:1] == "4":
         
-        print("Este resíduo será encaminhado para o recipiente misto para melhor averiguação.")
+        print("Este resíduo será encaminhado para o recipiente especial para ser averiguado.")
         
     
     

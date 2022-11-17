@@ -2,4 +2,3 @@
 1 Aluminio
 2 Papel
 3 Organico
-4 Outro
